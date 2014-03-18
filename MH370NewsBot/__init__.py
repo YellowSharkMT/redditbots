@@ -10,8 +10,8 @@ SEARCH_TERMS = ['mh370', 'flight 370', 'malaysia jet', 'malaysia plane']
 class RedditBot:
   subs_to_poll = ['news', 'worldnews']
   r = None
-  post_cache = deque(maxlen=FETCH_LIMIT)
-  already_posted_urls = deque(maxlen=FETCH_LIMIT)
+  post_cache = deque()
+  already_posted_urls = deque()
 
 
   def __init__(self):
