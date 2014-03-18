@@ -1,5 +1,6 @@
 import praw, time, sys, urllib2
 from collections import deque
+# Create config file from config-example.py
 from config import USER, PASS
 
 DELAY = 20
