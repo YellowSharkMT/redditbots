@@ -67,7 +67,7 @@ class RedditBot:
         try:
             submitted_post = self.r.submit('MH370News', submission_title, url=post.url)
             flair_result = self.r.get_subreddit('MH370News').set_flair(submitted_post, ('/r/%s' % sub), sub)
-            self.output('Submitted post to %s: %s' + (sub, post.title))
+            self.output('Submitted post to %s: %s' % (sub, post.title))
             self.post_cache.append(post.id)
         except praw.errors.AlreadySubmitted:
             self.log_error('This post has already been submitted to MH370News. Adding it to the post_cache. (%s)'
