@@ -1,12 +1,12 @@
-import praw, time, sys, urllib2, logging, os
+import praw, time, sys, urllib2, logging, os, logging.handlers
 from collections import deque
 # Create config file from config-example.py
 from config import USER, PASS
 
-DELAY = 90
+DELAY = 180
 FETCH_LIMIT = 250
 SEARCH_TERMS = ['mh370', 'flight 370', 'malaysia jet', 'malaysia plane']
-LOG_FILE = os.path.dirname(__file__) + '/bot-output.log'
+LOG_FILE = os.path.dirname(__file__) + '/logs/bot-output.log'
 
 
 class RedditBot:
@@ -92,7 +92,8 @@ class RedditBot:
 
     def init_logger(self):
         self.logger = logging.getLogger('BotLogger')
-        hdlr = logging.FileHandler(LOG_FILE)
+        #hdlr = logging.FileHandler(LOG_FILE)
+        hdlr = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=50000, backupCount=5)
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(msg)s')
         hdlr.setFormatter(formatter)
         self.logger.addHandler(hdlr)

@@ -1,3 +1,4 @@
 /.idea
 /*/config.py
-/*/bot-output.log
+*.log
+*.log.*
