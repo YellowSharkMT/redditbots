@@ -80,11 +80,9 @@ class RedditBot:
 
     def output(self, msg):
         self.logger.info(msg)
-        #print(msg)
 
     def log_error(self, msg):
         self.logger.error(msg)
-        #print(msg)
 
     def test(self):
         self.log_in()
@@ -92,7 +90,6 @@ class RedditBot:
 
     def init_logger(self):
         self.logger = logging.getLogger('BotLogger')
-        #hdlr = logging.FileHandler(LOG_FILE)
         hdlr = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=50000, backupCount=5)
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(msg)s')
         hdlr.setFormatter(formatter)
