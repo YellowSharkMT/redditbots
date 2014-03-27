@@ -66,7 +66,8 @@ class RedditBot:
         submission_title = post.title
         try:
             submitted_post = self.r.submit('MH370News', submission_title, url=post.url)
-            flair_result = self.r.get_subreddit('MH370News').set_flair(submitted_post, ('/r/%s' % sub), sub)
+            flair = ('/r/%s, /u/%s' % sub, post.author)
+            flair_result = self.r.get_subreddit('MH370News').set_flair(submitted_post, flair, sub)
             self.output('Submitted post to %s: %s' % (sub, post.title))
             self.post_cache.append(post.id)
         except praw.errors.AlreadySubmitted:
